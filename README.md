@@ -33,6 +33,8 @@ This is a proof of concept to see how eBPF integrates with the Linux Kernel and 
 
 ## 🛠 Installation Guide
 
+Clone this repo into /opt on your Linux server. 
+
 ### ✅ 1. Check/Upgrade Kernel
 
 ```bash
@@ -135,7 +137,7 @@ You should start seeing:
 Create a service file:
 
 ```bash
-sudo nano /etc/systemd/system/psm-agent.service
+sudo vi /etc/systemd/system/psm-agent.service
 ```
 
 Paste:
