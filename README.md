@@ -1,4 +1,4 @@
-# PSM Agent
+# PSM eBPF Agent
 
 `agent.py` is a lightweight eBPF-based telemetry agent for Linux to send updated into PSM as a workload object. It observes live network activity on the host directly in the Kernel, enriches it with userland metadata (user, process, IP, direction, etc.), and reports the summarized activity to PSM via labeled payloads. The update interval can be set in the configuration file as well as additional timers and tiering labels. 
 
