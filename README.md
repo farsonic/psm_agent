@@ -96,7 +96,11 @@ sudo systemctl start redis
 
 ### ⚙️ 5. Create `config.json`
 
-This config should sit in the **same directory** as `agent.py`.
+This config should sit in the **same directory** as `agent.py`, which will most likely be /opt/psm-agent. Ensure that you have
+correctly entered the psm IP Address, username and password. 
+
+Change the hostip to be that of the host you are administering and the spec-hostname should be a dummy host that already exists within
+PSM. 
 
 ```json
 {
@@ -105,10 +109,10 @@ This config should sit in the **same directory** as `agent.py`.
   "psmpassword": "changeme",
   "hostip": "10.0.0.25",
   "hostname": "my-host-001",
-  "spec_hostname": "my-host-001",
+  "spec_hostname": "dummy",
   "enable_suspicious_binary_labels": true,
   "ttl_seconds": 3600,
-  "summary_interval": 5,
+  "summary_interval": 25,
   "role": "backend",
   "status": "prod"
 }
