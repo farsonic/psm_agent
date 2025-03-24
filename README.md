@@ -1,6 +1,8 @@
 # PSM Agent
 
-`agent.py` is a lightweight eBPF-based telemetry agent for Linux. It observes live network activity on the host, enriches it with metadata (user, process, IP, direction, etc.), and reports the summarized activity to PSM via labeled payloads.
+`agent.py` is a lightweight eBPF-based telemetry agent for Linux to send updated into PSM as a workload object. It observes live network activity on the host directly in the Kernel, enriches it with metadata (user, process, IP, direction, etc.), and reports the summarized activity to PSM via labeled payloads. The update interval can be set in the configuration file as well as additional timers and tiering labels. 
+
+This is a proof of concept to see how eBPF integrates with the Linux Kernel and userland tools. 
 
 ---
 
@@ -8,7 +10,7 @@
 
 - 🧠 Real-time connection tracking using eBPF
 - 📤 Inbound/outbound user+process+port labeling
-- ⚠️ Suspicious binary detection (outside `/usr/bin`, `/usr/sbin`)
+- ⚠️ Suspicious binary detection (outside `/usr/bin`, `/usr/sbin`) - Work in Progress 
 - 🧠 System metadata: hostname, kernel, uptime, heartbeat, role, status, version, checksum
 - 🗂 Label grouping by user + direction
 - 🧊 Redis-backed TTL cache to reduce noise
@@ -21,7 +23,7 @@
 
 | Requirement | Notes |
 |-------------|-------|
-| **Ubuntu Server 20.04+** | 22.04 recommended |
+| **Ubuntu Server 20.04+** | 22.04 or greater recommended |
 | **Linux Kernel 5.15+**   | Needed for BPF features |
 | **Python 3.8+**          | Runtime |
 | **Redis**                | In-memory event tracking |
@@ -208,10 +210,7 @@ You’ll see live connections, Redis key entries, and PSM HTTP interactions.
 
 ## 🔐 Security Tips
 
-- Ensure PSM endpoint uses TLS (`https://...`)
-- Only allow local access to Redis if not using authentication
-- Run the agent as root or with required `CAP_BPF` / `CAP_SYS_ADMIN`
-- Validate the `agent_checksum` from time to time
+- Create a dedicated user in PSM that has a role assignment that only allows workload creation and updates. 
 
 ---
 
@@ -224,8 +223,6 @@ This tool gives you deep visibility into:
 - How hosts behave in different environments (via `role` / `status`)
 - Agent uptime and system health reporting
 
-It’s designed to be lightweight, secure, and extensible for modern observability.
-
 ---
 
 ## 📄 License
@@ -236,4 +233,8 @@ MIT — feel free to fork, improve, and submit PRs.
 
 ## 💬 Questions?
 
-Open an issue or contact the maintainers in PSM Slack channel.
+Open an issue 
+
+Not currently tested for production use 
+
+Feedback appreciated 
