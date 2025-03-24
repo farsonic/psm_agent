@@ -74,9 +74,11 @@ sudo apt install -y \
 
 ### 🐍 3. Install Python Libraries
 
+I had to install these using sudo as eBPF via BCC requires root access for kernel socket hooks. 
+
 ```bash
-pip3 install --upgrade pip
-pip3 install redis requests
+sudo pip3 install --upgrade pip
+sudo pip3 install redis requests
 ```
 
 ---
