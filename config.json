@@ -1,0 +1,13 @@
+{
+  "psmipaddress": "192.168.0.128",
+  "psmusername": "admin",
+  "psmpassword": "Pensando0$",
+  "hostip": "192.168.0.159",
+  "hostname": "worker1",
+  "spec_hostname": "dummy",
+  "enable_suspicious_binary_labels": true,
+  "ttl_seconds": 3600,
+  "summary_interval": 5,
+  "role": "web",
+  "status": "prod"
+}
