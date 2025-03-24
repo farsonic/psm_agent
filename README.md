@@ -214,6 +214,10 @@ Run the agent in debug mode:
 ```
 
 You’ll see live connections, Redis key entries, and PSM HTTP interactions.
+```
+redis-cli keys "*"
+redis-cli ttl <Key> 
+```
 
 ---
 
